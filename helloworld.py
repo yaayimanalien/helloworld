@@ -36,4 +36,3 @@ def register():
     welcome()
 
 welcome()
-raw_input()
