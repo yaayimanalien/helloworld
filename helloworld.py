@@ -1,32 +1,40 @@
 print('Hello, World!')
-key = ("hello123")
-name = True
-username = True
-
+key = ""
+username = ""
+username_login = ""
+password_login = ""
 
 def welcome():
-    global name
-    if name != True:
-        print("Welcome, " + name + "!")
-        fuction = str(input("Please select fuction: (login/register)"))
-        if fuction == "login":
-            login()
-        else:
-            if fuction == "register":
-                register()
+    global username
+    print("Welcome, " + username + "!")
+
+def function():
+    fuction = str(input("Please select fuction: (login/register)"))
+    if fuction == "login":
+        login()
     else:
-        name = str(input("Please enter your name: "))
-        welcome()
+        if fuction == "register":
+            register()
 
 
 def login():
     global key
-    password = str(input("Please enter your password: "))
-    if password == key:
+    global username
+    global username_login
+    global password_login
+    username_login = str(input("Please enter your username: "))
+    password_login = str(input("Please enter your password: "))
+    login2()
+
+
+def login2():
+    if (username_login == username and password_login == key):
         print("Login successful.")
+
     else:
         print("Login unsuccessful. Please try again.")
-        login()
+        function()
+
 
 def register():
     global username
@@ -34,5 +42,10 @@ def register():
     username = str(input("Please enter your username: "))
     key = str(input("Please enter your password: "))
     welcome()
+    function()
 
-welcome()
+if username != "":
+    welcome()
+    function()
+else:
+    function()
